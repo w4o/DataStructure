@@ -7,7 +7,7 @@ package github.frank.queue;
  */
 public class MyQueue {
 	
-	private int[] queue;		//队列数组指针
+	private Element[] queue;	//队列数组指针
 	private int queueLength; 	//队列元素个数
 	private int queueCapacity;	//队列数组容量
 	
@@ -20,17 +20,10 @@ public class MyQueue {
 	 */
 	public MyQueue(int queueCapacity) {
 		
-		this.queueCapacity = queueCapacity;		//赋值队列数组容量
-		queue = new int[queueCapacity];			//根据队列容量实例化队列数组
+		this.queueCapacity = queueCapacity;			//赋值队列数组容量
+		queue = new Element[queueCapacity];			//根据队列容量实例化队列数组
 		// 清空队列
 		this.clearQueue();
-	}
-	
-	/**
-	 * 销毁队列
-	 */
-	public void destroyQueue() {
-		this.queue = null;
 	}
 	
 	/**
@@ -71,29 +64,28 @@ public class MyQueue {
 	 * @param element
 	 * @return
 	 */
-	public boolean inQueue(int element) {
+	public boolean inQueue(Element element) {
 		if (queueFull()) 
 			return false;
 		
 		queue[iTail] = element;
 		iTail = (iTail+1) % queueCapacity;
-		queueLength ++ ;
+		this.queueLength ++ ;
 		return true;
 	} 
 	
 	/**
 	 * 首元素出列
-	 * @param element
 	 * @return
 	 */
-	public boolean deQueue(Integer element) {
-		if (queueEmpty()) 
-			return false;
+	public Element deQueue() {
+		if (queueEmpty())
+			return null;
 		
-		queue[iHead] = element;
+		Element element = queue[iHead];
 		iHead = (iHead+1) % queueCapacity;
-		queueLength --;
-		return true;
+		this.queueLength --;
+		return element;
 	}
 	
 	/**
@@ -103,6 +95,21 @@ public class MyQueue {
 		
 		for (int i = iHead; i < queueLength + iHead; i++)
 			System.out.println(this.queue[i%queueCapacity]);
+		
+	}
+	
+	/**
+	 * 获取队列元素数组
+	 * @return
+	 */
+	public Element[] getQueueElements(){
+		Element [] elements = new Element[queueLength];
+		int index = 0;
+		for (int i = iHead; i < queueLength + iHead; i++) {
+			elements[index] = this.queue[i%queueCapacity];
+			index++;
+		}
+		return elements;
 		
 	} 
 	
