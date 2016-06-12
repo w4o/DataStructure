@@ -101,7 +101,7 @@ public class MyQueue {
 	 */
 	public void queueTraverse(){
 		
-		for (int i = iHead; i < queueLength; i++)
+		for (int i = iHead; i < queueLength + iHead; i++)
 			System.out.println(this.queue[i%queueCapacity]);
 		
 	} 
