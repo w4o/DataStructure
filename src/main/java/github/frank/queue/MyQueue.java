@@ -1,5 +1,26 @@
 package github.frank.queue;
-
+/*
+ * ///////////////////队列简要说明////////////////////////
+ * 
+ * 队列函数：
+ * 	MyQueue(int queueCapacity)			创建队列
+ * 	void clearQueue()					清空队列
+ * 	boolean queueEmpty()				队列判空
+ * 	boolean queueFull() 				队列判满
+ * 	int queueLength()					队列长度
+ * 	boolean inQueue(Element element)	新元素入列
+ * 	Element deQueue()					首元素出列
+ * 	void queueTraverse()				遍历队列
+ *  Element[] getQueueElements()		队列数组
+ * 	
+ * 队列属性：
+ * 	Element[] queue						队列数组指针
+ * 	int queueLength						队列元素个数
+ * 	int queueCapacity					队列数组容量
+ *  int iHead							队列头索引
+ *  int iTail							队列尾索引
+ *  //////////////////////////////////////////////////
+ */
 /**
  * 简单队列
  * @author Frank
