@@ -7,7 +7,7 @@ import org.junit.Test;
 public class MyQueueTest {
 
 	@Test
-	public void createQueue(){
+	public void queeuTest(){
 		
 		// 创建环形队列
 		MyQueue myQueue = new MyQueue(4);
